@@ -1,0 +1,128 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+IValidatableObject <|-- LineItem
+
+Author "1" -- "many" BookAuthor
+Book "1" -- "many" Review
+Book "1" -- "many" Tag
+Book "1" -- "many" BookAuthor
+Book "1" -- "1" PriceOffer
+LineItem "1" -- "1" Book
+Order "1" -- "many" LineItem
+Tag "1" -- "many" Book
+
+class Author {
+    int AuthorId
+    string Name
+    
+    ICollection<BookAuthor> BooksLink
+}
+
+class Book {
+    int BookId
+    string Title
+    string Description
+    DateTime PublishedOn
+    string Publisher
+    decimal Price
+    string ImageUrl
+    bool SoftDeleted
+    
+    PriceOffer Promotion
+    ICollection<Review> Reviews
+    ICollection<Tag> Tags
+    Collection<BookAuthor> AuthorsLink
+}
+
+class BookAuthor {
+    int BookId
+    int AuthorId
+    byte Order
+    
+    Book Book
+    Author Author
+}
+
+interface IValidatableObject{}
+
+class LineItem  {
+    int LineItemId
+    byte LineNum
+    
+    short NumBooks
+    decimal BookPrice
+    
+    int OrderId
+    int BookId
+    
+    Book ChosenBook
+    
+    IValidatableObject.Validate()
+    
+}
+
+class Order {
+    int OrderId
+    DateTime DateOrderedUtc
+    Guid CustomerId
+    ICollection<LineItem>
+    
+    OrderNumber()
+    Order()
+}
+
+class PriceOffer {
+    int PriceOfferId [PK]
+    decimal NewPrice
+    string PromotionalText
+}
+
+class Review {
+    int ReviewId [PK]
+    string VoterName
+    int NumStars
+    string Comment
+}
+
+class Tag {
+    string TagId [PK]
+    ICollection<Book> Books
+}
+
+note left of Author::AuthorId
+    PrimaryKey
+end note
+
+note left of Book::BookId
+    PrimaryKey
+end note
+
+note left of LineItem::LineItemId
+    PrimaryKey
+end note
+
+note left of LineItem::OrderId
+    FK
+end note
+
+note left of LineItem::BookId
+    FK
+end note
+
+note left of Order::OrderId
+    PrimaryKey
+end note
+
+
+
+note left of BookAuthor::BookId
+    FK
+end note
+
+note left of BookAuthor::AuthorId
+    FK
+end note
+
+
+@enduml
