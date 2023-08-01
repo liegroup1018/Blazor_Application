@@ -4,4 +4,5 @@ Blazor_Example, 有些是多余的，有些无法运行。
 在往下就是学习如何使用EFCore 对数据库进行CURD
 Git tracks changes of files.
 Creating a new branch is quick and simple.
+Git is a free software ..
 1. 读取Json中的文件并写写入数据库
