@@ -3,5 +3,4 @@ Blazor_Example, 有些是多余的，有些无法运行。
 目前刚将Blazor应用连接到mysql,下一步是要把数据库中数据展示出来
 在往下就是学习如何使用EFCore 对数据库进行CURD
 Git tracks changes of files.
-Creating a new branch is quick.
-Creating a new branch is quick & simple.
+Creating a new branch is quick and simple.
