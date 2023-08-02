@@ -20,4 +20,13 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="seedData\Apress books, dollar converted at 1.2, roundup to 5 dollars - 16-12-06 12-10-46.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="seedData\Test.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

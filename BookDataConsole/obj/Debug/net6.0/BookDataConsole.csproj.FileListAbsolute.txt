@@ -30,3 +30,5 @@
 /home/ligroup/RiderProjects/Blazor_Application/BookDataConsole/obj/Debug/net6.0/BookDataConsole.pdb
 /home/ligroup/RiderProjects/Blazor_Application/BookDataConsole/obj/Debug/net6.0/BookDataConsole.genruntimeconfig.cache
 /home/ligroup/RiderProjects/Blazor_Application/BookDataConsole/obj/Debug/net6.0/ref/BookDataConsole.dll
+/home/ligroup/RiderProjects/Blazor_Application/BookDataConsole/bin/Debug/net6.0/seedData/Apress books, dollar converted at 1.2, roundup to 5 dollars - 16-12-06 12-10-46.json
+/home/ligroup/RiderProjects/Blazor_Application/BookDataConsole/bin/Debug/net6.0/seedData/Test.json

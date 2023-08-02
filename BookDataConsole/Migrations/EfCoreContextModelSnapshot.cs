@@ -56,11 +56,9 @@ namespace BookDataConsole.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Price")
@@ -184,7 +182,6 @@ namespace BookDataConsole.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("NumStars")
