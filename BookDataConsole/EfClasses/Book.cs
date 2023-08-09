@@ -23,6 +23,8 @@ namespace DataLayer.EfClasses
         //relationships
 
         public PriceOffer Promotion { get; set; } //#C
+        // relationships可以为空，但无须使用nullable变量
+        // data 部分不能
         public ICollection<Review> Reviews { get; set; } //#D
 
         public ICollection<Tag> Tags { get; set; } //#E

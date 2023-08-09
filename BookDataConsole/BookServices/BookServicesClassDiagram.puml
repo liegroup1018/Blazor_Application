@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class BookListDto
+class Book
+
+class IQueryable  <<T>> {
+    IQueryable<BookListDto> MapBookToDto()
+    IQueryable<BookListDto> OrderBooksBy(OrderByOptions orderByOptions)
+    IQueryable<BookListDto> FilterBooksBy(BooksFilterBy filterBy, string filterValue)
+    IQueryable<BookListDto> Page<BookListDto>(int pageNumZeroStart, int pageSize)
+}
+
+note right of IQueryable: T = Book or BookListDto
+
+note left of IQueryable::MapBookToDto 
+T = Book 的成员函数
+endnote
+note left of IQueryable::OrderBooksBy 
+T = BookListDto 的成员函数
+endnote
+note left of IQueryable::FilterBooksBy
+T = BookListDto 的成员函数
+endnote
+note left of IQueryable::Page<BookListDto> 
+T = BookListDto 的成员函数
+endnote
+
+
+
+BooksFilterBy --> SortFilterPageOptions
+OrderByOptions --> SortFilterPageOptions
+IQueryable ..> SortFilterPageOptions
+ListBooksService ..> SortFilterPageOptions
+IQueryable -- BookListDto
+IQueryable -- Book
+ListBooksService ..> IQueryable
+
+class SortFilterPageOptions {
+    + const int DefaultPageSize = 10
+    - int _pageNum = 1;
+    - int _pageSize = DefaultPageSize;
+    + int[] PageSizes = new[] {5, DefaultPageSize, 20, 50, 100, 500, 1000}
+    
+    + OrderByOptions OrderByOptions
+    + BooksFilterBy FilterBy
+    + string FilterValue
+    
+    + int PageNum
+    + int PageSize
+    + int NumPages
+    
+    + string PrevCheckState
+    
+    + void SetupRestOfDto<T>(IQueryable<T> query)
+    + string GenerateCheckState()
+}
+
+enum OrderByOptions {
+    SimpleOrder = 0,
+    ByVotes,
+    ByPublicationDate,
+    ByPriceLowestFirst,
+    ByPriceHigestFirst
+}
+
+enum BooksFilterBy {
+    NoFilter = 0,
+    ByVotes,
+    ByTags,
+    ByPublicationYear
+}
+
+class ListBooksService {
+    - readonly EfCoreContext _context
+    + ListBooksService(EfCoreContext context)
+    + IQueryable<BookListDto> SortFilterPage(SortFilterPageOptions options)
+    
+}
+ 
+
+@enduml
