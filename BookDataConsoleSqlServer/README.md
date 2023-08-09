@@ -1,1 +1,0 @@
-EFCore + SqlServer
